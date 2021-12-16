@@ -1,0 +1,15 @@
+Y:\CodeLab\HourBank\hourbank.console\obj\Debug\net6.0\hourbank.console.csproj.AssemblyReference.cache
+Y:\CodeLab\HourBank\hourbank.console\obj\Debug\net6.0\hourbank.console.GeneratedMSBuildEditorConfig.editorconfig
+Y:\CodeLab\HourBank\hourbank.console\obj\Debug\net6.0\hourbank.console.AssemblyInfoInputs.cache
+Y:\CodeLab\HourBank\hourbank.console\obj\Debug\net6.0\hourbank.console.AssemblyInfo.cs
+Y:\CodeLab\HourBank\hourbank.console\obj\Debug\net6.0\hourbank.console.csproj.CoreCompileInputs.cache
+Y:\CodeLab\HourBank\hourbank.console\bin\Debug\net6.0\hourbank.console.exe
+Y:\CodeLab\HourBank\hourbank.console\bin\Debug\net6.0\hourbank.console.deps.json
+Y:\CodeLab\HourBank\hourbank.console\bin\Debug\net6.0\hourbank.console.runtimeconfig.json
+Y:\CodeLab\HourBank\hourbank.console\bin\Debug\net6.0\hourbank.console.dll
+Y:\CodeLab\HourBank\hourbank.console\bin\Debug\net6.0\ref\hourbank.console.dll
+Y:\CodeLab\HourBank\hourbank.console\bin\Debug\net6.0\hourbank.console.pdb
+Y:\CodeLab\HourBank\hourbank.console\obj\Debug\net6.0\hourbank.console.dll
+Y:\CodeLab\HourBank\hourbank.console\obj\Debug\net6.0\ref\hourbank.console.dll
+Y:\CodeLab\HourBank\hourbank.console\obj\Debug\net6.0\hourbank.console.pdb
+Y:\CodeLab\HourBank\hourbank.console\obj\Debug\net6.0\hourbank.console.genruntimeconfig.cache

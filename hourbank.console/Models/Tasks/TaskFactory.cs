@@ -1,0 +1,4 @@
+namespace HourBank.Models.Tasks
+{
+
+}
