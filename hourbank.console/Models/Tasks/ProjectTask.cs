@@ -39,27 +39,27 @@ namespace HourBank.Models.Tasks
 
         public override void Initialize()
         {
-            throw new NotImplementedException();
+            this.Status = BusinessActivityStatus.Created;
         }
         
         public override void Terminate()
         {
-            throw new NotImplementedException();
+            this.Status = BusinessActivityStatus.Stopped];
         }
 
         public override void Continue()
         {
-            throw new NotImplementedException();
+            this.Status = BusinessActivityStatus.Running;
         }
 
         public override void Hold()
         {
-            throw new NotImplementedException();
+            this.Status = BusinessActivityStatus.OnHold;
         }
 
         public override void Cancel()
         {
-            throw new NotImplementedException();
+            this.Status = BusinessActivityStatus.Canceled;
         }
     }
 }
