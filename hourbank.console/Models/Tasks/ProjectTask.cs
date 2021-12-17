@@ -1,13 +1,18 @@
-using System.Globalization;
 namespace HourBank.Models.Tasks
 {
     class ProjectTask : ProjectActivity
     {
         // The tile of your project as a string.
         public string? Project { get; set; }
-
+/// <summary>
+/// This is the empity constructor. When use it you must set the Project and other properties in {}
+/// </summary>
         public ProjectTask() {}
-  
+/// <summary>
+/// Standard constructor.
+/// </summary>
+/// <param name="title">The title of the task</param>
+/// <param name="project">The project name its related to</param>
         public ProjectTask(string title, string project)
         {
             Title = title;
