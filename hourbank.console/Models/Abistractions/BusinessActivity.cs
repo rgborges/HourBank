@@ -5,17 +5,13 @@ namespace HourBank.Models.Tasks
     /// </summary>
     public abstract class BusinessActivity
     {
-        public Guid Id {get; set; }
+        public int Id {get; set; }
         public string Title { get; set; }
         public BusinessActivityStatus Status { get; set;}
         public DateTime StartDateTime { get; set;}
         public DateTime EndDateTime { get; set; }
         public double TotalTaskTime {set; get;}
 
-        public virtual void GenerateIdentity()
-        {
-            Id = new Guid();
-        }
     }
 
     public abstract class ProjectActivity : BusinessActivity, IBussinessTask

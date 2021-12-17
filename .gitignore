@@ -1,2 +1,4 @@
 bin
-csproj
+cache
+editorconfig
+/bin/

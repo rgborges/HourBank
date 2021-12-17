@@ -4,7 +4,7 @@ namespace HourBank.Models.Tasks
     class ProjectTask : ProjectActivity
     {
         // The tile of your project as a string.
-        public string Project { get; set; }
+        public string? Project { get; set; }
 
         public ProjectTask() {}
   
