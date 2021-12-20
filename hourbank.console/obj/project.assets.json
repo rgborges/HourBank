@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "Y:\\CodeLab\\HourBank\\hourbank.console\\hourbank.console.csproj",
+      "projectUniqueName": "C:\\Users\\rborges\\Source\\Repo\\HourBank\\hourbank.console\\hourbank.console.csproj",
       "projectName": "hourbank.console",
-      "projectPath": "Y:\\CodeLab\\HourBank\\hourbank.console\\hourbank.console.csproj",
+      "projectPath": "C:\\Users\\rborges\\Source\\Repo\\HourBank\\hourbank.console\\hourbank.console.csproj",
       "packagesPath": "C:\\Users\\rborges\\.nuget\\packages\\",
-      "outputPath": "Y:\\CodeLab\\HourBank\\hourbank.console\\obj\\",
+      "outputPath": "C:\\Users\\rborges\\Source\\Repo\\HourBank\\hourbank.console\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\rborges\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -58,7 +58,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }

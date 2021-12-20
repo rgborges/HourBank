@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9E7O7FR90rKSvNsxZnGiTP3+gfnSVc7oxAL9QlptOpc+4D83WefsTBQByeLNt121VavuJMBvRyDuSeH6xNKYiA==",
+  "dgSpecHash": "nCjh2Br5SwK9NB5S8qw44LfOXA9UyUrKZeTapODkd6Dmz0ANp2t7MtCUh6pioU29Nv9RzkWwPK3txo1jsVp96w==",
   "success": true,
-  "projectFilePath": "Y:\\CodeLab\\HourBank\\hourbank.console\\hourbank.console.csproj",
+  "projectFilePath": "C:\\Users\\rborges\\Source\\Repo\\HourBank\\hourbank.console\\hourbank.console.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
