@@ -1,4 +1,0 @@
-namespace HourBank.Models.Tasks
-{
-
-}

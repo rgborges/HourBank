@@ -17,7 +17,7 @@ namespace HourBank.Models.Tasks
         /// Determines what this task has to accomplish when in Initialize state. This state defines when the task is 
         /// created.
         /// </summary>
-        public void Initialize();
+        public void Initialize(IHourCounterService service);
         /// <summary>
         /// Determines wha this task has to accomplish when in Continue state. It's used to leave the Hold or Cancel
         /// state.

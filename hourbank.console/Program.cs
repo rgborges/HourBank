@@ -5,17 +5,16 @@
 Console.WriteLine("Hello, World!");
 
 //Create a list of tasks
-List<ProjectTask> DailyProjectTasksList = new List<ProjectTask>()
-{
-    new ProjectTask {Title="Migrate a database",Project="Project A", InstanceId = Guid.NewGuid()},
-    new ProjectTask {Title="UpdateMy Hours", Project= "Project B", InstanceId = Guid.NewGuid()}
-};
+HourCounterService service = new HourCounterService();
 
-var Result = DailyProjectTasksList.Where( x => x.Project.Contains("Project A")).ToList();
-Console.WriteLine(Result);
+//Add some task
+service.AddTask(new ProjectTask {Title = "Remanejamento do banco de dados", Project = "Projeto A"});
+service.AddTask(new ProjectTask {Title = "Deploy de API no cliente", Project = "Projeto B"});
 
-//Print
-foreach (ProjectActivity t in DailyProjectTasksList)
+
+
+foreach (BusinessTask a in service.GetTaskList())
 {
-    Console.WriteLine(t.ToString());
+    Console.WriteLine(a.ToString());
 }
+

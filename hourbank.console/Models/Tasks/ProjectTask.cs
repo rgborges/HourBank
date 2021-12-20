@@ -1,13 +1,14 @@
 namespace HourBank.Models.Tasks
 {
-    class ProjectTask : ProjectActivity
+    class ProjectTask : BusinessTask
     {
-        public Guid InstanceId { get; set;}
+     
         // The tile of your project as a string.
         public string? Project { get; set; }
 
+ 
         // Reference to a Hour Conter Service 
-        private IHourCounterService? _conterservice;
+        private IHourCounterService? _counterservice;
         /// <summary>
         /// This is the empity constructor. When use it you must set the Project and other properties in {}.
         /// If you use this constructor you need to implement Guid.NewGuid in InstanceId
@@ -26,43 +27,18 @@ namespace HourBank.Models.Tasks
             Status = BusinessActivityStatus.Created;
             StartDateTime = DateTime.Now;
             InstanceId = Guid.NewGuid();
-            this._conterservice = service;
-        }
-        public override void Initialize()
-        {
-            this.TotalTaskTime = TimeSpan.Zero;
-            this.Status = BusinessActivityStatus.Created;
-        }
-        
-        public override void Terminate()
-        {
-            this.TotalTaskTime += this.EndDateTime.Subtract(this.StartDateTime);
-            this.Status = BusinessActivityStatus.Stopped;
+            this._counterservice = service;
         }
 
-        public override void Continue()
-        {
-            this.Status = BusinessActivityStatus.Running;
-        }
-        /// <summary>
-        /// This is the Pause state from the interface
-        /// </summary>
-        public override void Hold()
-        {
-            
-        }
 
-        public override void Cancel()
-        {
-            this.Status = BusinessActivityStatus.Canceled;
-        }
 /// <summary>
 /// Portuguish: Subistitui a forma como o Objeto é mostrado no console via método ToString()
 /// </summary>
 /// <returns>Retorna uma string representante do objeto.</returns>
         public override string ToString()
         {
-            return $"Guid: {this.InstanceId}, Title: {this.Title}, Status: {this.Status}, Total Time: {this.TotalTaskTime}";
+            return $"Guid: {this.InstanceId}, Title: {this.Title}, Status: {this.Status}";
         }
+
     }
 }
