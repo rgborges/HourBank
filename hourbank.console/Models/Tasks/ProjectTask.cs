@@ -24,12 +24,11 @@ namespace HourBank.Models.Tasks
         {
             Title = title;
             Project = project;
-            Status = BusinessActivityStatus.Created;
+            CurrentStatus = BusinessTaskStatus.Created;
             StartDateTime = DateTime.Now;
             InstanceId = Guid.NewGuid();
             this._counterservice = service;
         }
-
 
 /// <summary>
 /// Portuguish: Subistitui a forma como o Objeto é mostrado no console via método ToString()
@@ -37,7 +36,7 @@ namespace HourBank.Models.Tasks
 /// <returns>Retorna uma string representante do objeto.</returns>
         public override string ToString()
         {
-            return $"Guid: {this.InstanceId}, Title: {this.Title}, Status: {this.Status}";
+            return $"Guid: {this.InstanceId}, Title: {this.Title}, Status: {this.CurrentStatus}";
         }
 
     }

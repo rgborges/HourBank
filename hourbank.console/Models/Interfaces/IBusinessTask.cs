@@ -1,13 +1,14 @@
 namespace HourBank.Models.Tasks
 {
-    public enum BusinessActivityStatus
+    public enum BusinessTaskStatus
     {
         Created,
         Canceled,
         Stopped,
         Running,
         OnHold,
-        Completed
+        Completed,
+        Initiated
     }
 
     public interface IBussinessTask
@@ -17,7 +18,7 @@ namespace HourBank.Models.Tasks
         /// Determines what this task has to accomplish when in Initialize state. This state defines when the task is 
         /// created.
         /// </summary>
-        public void Initialize(IHourCounterService service);
+        public void Initialize();
         /// <summary>
         /// Determines wha this task has to accomplish when in Continue state. It's used to leave the Hold or Cancel
         /// state.
