@@ -9,17 +9,11 @@ namespace HourBank.Models.Tasks
     /// encerradas, porém o HoourCounterService deve intermediar e tirar a responsabilidade da tarefa em gerenciar o seu tempo.
     public class HourCounterService
     {
-        /// <summary>
-        /// The service TaskLis for management in the HourBank.
-        /// </summary>
         public List<BusinessTask> TaskList {get; private set;}
         /// <summary>
         /// Represents a Log of TimeCycles from Tasks.
         /// </summary>
         private List<HourCycle> HourCycleList {get;}
-        /// <summary>
-        /// The standard constructor initiates the Task and HourCycle List.
-        /// </summary>
         public HourCounterService()
         {
             TaskList = new List<BusinessTask>();

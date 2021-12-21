@@ -30,7 +30,25 @@ service.Terminate(
     service.TaskList[0]
 );
 service.AddTask(new ProjectTask {Title = "Deploy de API no cliente", Project = "Projeto B"});
-
+service.Initialize(
+    service.TaskList[1]
+);
+//Start the task again
+service.Start(
+    service.TaskList[1]
+);
+//Pauses the task.
+service.Hold(
+    service.TaskList[1]
+);
+//Start the task again
+service.Start(
+    service.TaskList[1]
+);
+//End this task
+service.Terminate(
+    service.TaskList[1]
+);
 
 Console.WriteLine("Tasks: ");
 foreach (BusinessTask a in service.GetTaskList())
