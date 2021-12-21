@@ -9,7 +9,24 @@ HourCounterService service = new HourCounterService();
 
 //Add some task
 service.AddTask(new ProjectTask {Title = "Remanejamento do banco de dados", Project = "Projeto A"});
+//Initialize the first task on the list
 service.Initialize(
+    service.TaskList[0]
+);
+//Start the task again
+service.Start(
+    service.TaskList[0]
+);
+//Pauses the task.
+service.Hold(
+    service.TaskList[0]
+);
+//Start the task again
+service.Start(
+    service.TaskList[0]
+);
+//End this task
+service.Terminate(
     service.TaskList[0]
 );
 service.AddTask(new ProjectTask {Title = "Deploy de API no cliente", Project = "Projeto B"});

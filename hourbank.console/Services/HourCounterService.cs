@@ -54,6 +54,33 @@ namespace HourBank.Models.Tasks
             }
             HourCycleList.Add(cycle);            
         }
+        /// <summary>
+        /// Generates a new Hour Cycle by a Task.
+        /// </summary>
+        /// <param name="businessTask"></param>
+        /// <param name="incommingStatus"></param>
+        /// <returns></returns>
+        public HourCycle GenerateNewCycle(BusinessTask businessTask, BusinessTaskStatus incommingStatus)
+        {
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <param name="businessTask"></param>
+            /// <returns></returns>
+            DateTime currentStatusTime = DateTime.Now;
+            DateTime lastStatusTime = businessTask.LastStatusChanged;
+            BusinessTaskStatus lastStatus = businessTask.LastStatus;
+            BusinessTaskStatus currentStatus = incommingStatus;
+            return new HourCycle(
+                lastStatus,
+                currentStatus,
+                lastStatusTime,
+                currentStatusTime,
+                businessTask.InstanceId,
+                businessTask
+            );
+
+        }
         public double GetTotalHours(BusinessTask businessTask)
         {
             throw new NotImplementedException();
@@ -71,52 +98,63 @@ namespace HourBank.Models.Tasks
             // As this task is initiated, the total ammount is 0.00
 
             //Instanciate a new cycle
-            HourCycle incomming_cycle = new HourCycle(last_task_status, 
-            incoming_status, 
-            timetamp, 
-            timetamp, 
-            businessTask.InstanceId,
-            businessTask);
-            
-            HourCycleList.Add(incomming_cycle);
-
-
-            businessTask.LastStatus = businessTask.CurrentStatus;
-            businessTask.CurrentStatus = BusinessTaskStatus.Initiated;
-            businessTask.LastStatusChanged = DateTime.Now;
+            HourCycle incommingCycle = GenerateNewCycle(businessTask,incoming_status);
+            //Adiciona novo ciclo de horas para essa tarefa
+            HourCycleList.Add(incommingCycle);
+            //Atualiza status da tarefa
+            UpdateTaskStatus(businessTask, incoming_status);
         }
 
         public void Start(BusinessTask businessTask)
         {
-            HourCycle incomming_cycle = new HourCycle(
-                businessTask.CurrentStatus,
-                BusinessTaskStatus.Running,
-                businessTask.LastStatusChanged,
-                DateTime.Now,
-                businessTask.InstanceId,
-                businessTask
-            );
-
-            HourCycleList.Add(incomming_cycle);
-            
-            businessTask.LastStatus = businessTask.CurrentStatus;
-            businessTask.CurrentStatus = BusinessTaskStatus.Running;
-            businessTask.LastStatusChanged = DateTime.Now;
+            /// <summary>
+            /// Representa o início de uma tarefa. Dois estados transitam para este,
+            /// quando tarefe recém inicializada, e retomada de pausa 'OnHold' state.
+            /// </summary>
+            HourCycle incommingCycle = GenerateNewCycle(businessTask, BusinessTaskStatus.Running);
+            //Adiciona novo ciclo de horas em uma tarefa
+            HourCycleList.Add(incommingCycle);
+            //Atualiza status desta tarefa
+            UpdateTaskStatus(businessTask, BusinessTaskStatus.Running);
         }
 
         public void Hold(BusinessTask businessTask)
         {
-            throw new NotImplementedException();
+             /// <summary>
+            /// Representa o início de uma tarefa. Dois estados transitam para este,
+            /// quando tarefe recém inicializada, e retomada de pausa 'OnHold' state.
+            /// </summary>
+            HourCycle incommingCycle = GenerateNewCycle(businessTask, BusinessTaskStatus.OnHold);
+            //Adiciona novo ciclo de horas em uma tarefa
+            HourCycleList.Add(incommingCycle);
+            //Atualiza status desta tarefa
+            UpdateTaskStatus(businessTask, BusinessTaskStatus.OnHold);
         }
         public void Cancel(BusinessTask businessTask)
         {
-            throw new NotImplementedException();
+             /// <summary>
+            /// Representa o início de uma tarefa. Dois estados transitam para este,
+            /// quando tarefe recém inicializada, e retomada de pausa 'OnHold' state.
+            /// </summary>
+            HourCycle incommingCycle = GenerateNewCycle(businessTask, BusinessTaskStatus.Canceled);
+            //Adiciona novo ciclo de horas em uma tarefa
+            HourCycleList.Add(incommingCycle);
+            //Atualiza status desta tarefa
+            UpdateTaskStatus(businessTask, BusinessTaskStatus.Canceled);
         }
         public void Terminate(BusinessTask businessTask)
         {
-            throw new NotImplementedException();   
+              /// <summary>
+            /// Representa o início de uma tarefa. Dois estados transitam para este,
+            /// quando tarefe recém inicializada, e retomada de pausa 'OnHold' state.
+            /// </summary>
+            HourCycle incommingCycle = GenerateNewCycle(businessTask, BusinessTaskStatus.Completed);
+            //Adiciona novo ciclo de horas em uma tarefa
+            HourCycleList.Add(incommingCycle);
+            //Atualiza status desta tarefa
+            UpdateTaskStatus(businessTask, BusinessTaskStatus.Completed); 
         }
-        public void UpdateStatus(BusinessTask businessTask, BusinessTaskStatus incommingStatus)
+        public void UpdateTaskStatus(BusinessTask businessTask, BusinessTaskStatus incommingStatus)
         {
             /// <summary>
             /// O estado anterior da tarefa se torna armazena o estado corrente.
