@@ -9,16 +9,22 @@ namespace HourBank.Models.Tasks
     /// encerradas, porém o HoourCounterService deve intermediar e tirar a responsabilidade da tarefa em gerenciar o seu tempo.
     public class HourCounterService
     {
+        #region Properties
         public List<BusinessTask> TaskList {get; private set;}
         /// <summary>
         /// Represents a Log of TimeCycles from Tasks.
         /// </summary>
         private List<HourCycle> HourCycleList {get;}
+
+        #endregion
+        #region Constructors
         public HourCounterService()
         {
             TaskList = new List<BusinessTask>();
             HourCycleList = new List<HourCycle>();
         }
+        #endregion
+        #region Public Methods
         public List<BusinessTask>? GetTaskList()
         {
             return TaskList ?? new List<BusinessTask>();
@@ -35,7 +41,7 @@ namespace HourBank.Models.Tasks
             }
             TaskList.Add(task);
         }
-        public void AppendNewCycle(HourCycle cycle)
+        public void AddHourCycle(HourCycle cycle)
         {
             if(cycle == null)
             {
@@ -54,31 +60,6 @@ namespace HourBank.Models.Tasks
         /// <param name="businessTask"></param>
         /// <param name="incommingStatus"></param>
         /// <returns></returns>
-        public HourCycle GenerateNewCycle(BusinessTask businessTask, BusinessTaskStatus incommingStatus)
-        {
-            /// <summary>
-            /// 
-            /// </summary>
-            /// <param name="businessTask"></param>
-            /// <returns></returns>
-            DateTime currentStatusTime = DateTime.Now;
-            DateTime lastStatusTime = businessTask.LastStatusChanged;
-            BusinessTaskStatus lastStatus = businessTask.LastStatus;
-            BusinessTaskStatus currentStatus = incommingStatus;
-            return new HourCycle(
-                lastStatus,
-                currentStatus,
-                lastStatusTime,
-                currentStatusTime,
-                businessTask.InstanceId,
-                businessTask
-            );
-
-        }
-        public double GetTotalHours(BusinessTask businessTask)
-        {
-            throw new NotImplementedException();
-        }
         public void Initialize(BusinessTask businessTask)
         {
         // Aqui a tarefa acaba de seer criada. Ou seja, não temos ainda Ciclos atrelados á essa tarefa.
@@ -98,7 +79,6 @@ namespace HourBank.Models.Tasks
             //Atualiza status da tarefa
             UpdateTaskStatus(businessTask, incoming_status);
         }
-
         public void Start(BusinessTask businessTask)
         {
             /// <summary>
@@ -111,7 +91,6 @@ namespace HourBank.Models.Tasks
             //Atualiza status desta tarefa
             UpdateTaskStatus(businessTask, BusinessTaskStatus.Running);
         }
-
         public void Hold(BusinessTask businessTask)
         {
              /// <summary>
@@ -148,7 +127,9 @@ namespace HourBank.Models.Tasks
             //Atualiza status desta tarefa
             UpdateTaskStatus(businessTask, BusinessTaskStatus.Completed); 
         }
-        public void UpdateTaskStatus(BusinessTask businessTask, BusinessTaskStatus incommingStatus)
+        #endregion
+        #region Private Methods
+        private void UpdateTaskStatus(BusinessTask businessTask, BusinessTaskStatus incommingStatus)
         {
             /// <summary>
             /// O estado anterior da tarefa se torna armazena o estado corrente.
@@ -165,5 +146,28 @@ namespace HourBank.Models.Tasks
 
         
         }
+                private HourCycle GenerateNewCycle(BusinessTask businessTask, BusinessTaskStatus incommingStatus)
+        {
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <param name="businessTask"></param>
+            /// <returns></returns>
+            DateTime currentStatusTime = DateTime.Now;
+            DateTime lastStatusTime = businessTask.LastStatusChanged;
+            BusinessTaskStatus lastStatus = businessTask.LastStatus;
+            BusinessTaskStatus currentStatus = incommingStatus;
+            return new HourCycle(
+                lastStatus,
+                currentStatus,
+                lastStatusTime,
+                currentStatusTime,
+                businessTask.InstanceId,
+                businessTask
+            );
+
+     
+        }
+        #endregion
     }
 }

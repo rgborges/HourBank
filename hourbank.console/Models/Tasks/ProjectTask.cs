@@ -1,6 +1,6 @@
 namespace HourBank.Models.Tasks
 {
-    class ProjectTask : BusinessTask
+    public class ProjectTask : BusinessTask
     {
      
         // The tile of your project as a string.
@@ -36,7 +36,7 @@ namespace HourBank.Models.Tasks
 /// <returns>Retorna uma string representante do objeto.</returns>
         public override string ToString()
         {
-            return $"Guid: {this.InstanceId}, Title: {this.Title}, Status: {this.CurrentStatus}";
+            return $"Guid: {this.InstanceId}, Title: {this.Title}, Status: {this.CurrentStatus}, Project: {this.Project}";
         }
 
     }
