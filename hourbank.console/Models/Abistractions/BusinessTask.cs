@@ -50,6 +50,9 @@ namespace HourBank.Models.Tasks
         /// <value></value>
         public BusinessTaskStatus LastStatus { get; set; }
 
+        public virtual string ToLog(){
+            return this.ToString() ?? "Error in parsing the object to string";
+        }
     }
 
 }

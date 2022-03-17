@@ -1,25 +1,31 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\rborges\\Source\\Repo\\HourBank\\hourbank.console\\hourbank.console.csproj": {}
+    "C:\\Users\\TG456GS\\source\\repos\\HourBank\\hourbank.console\\hourbank.console.csproj": {}
   },
   "projects": {
-    "C:\\Users\\rborges\\Source\\Repo\\HourBank\\hourbank.console\\hourbank.console.csproj": {
+    "C:\\Users\\TG456GS\\source\\repos\\HourBank\\hourbank.console\\hourbank.console.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\rborges\\Source\\Repo\\HourBank\\hourbank.console\\hourbank.console.csproj",
+        "projectUniqueName": "C:\\Users\\TG456GS\\source\\repos\\HourBank\\hourbank.console\\hourbank.console.csproj",
         "projectName": "hourbank.console",
-        "projectPath": "C:\\Users\\rborges\\Source\\Repo\\HourBank\\hourbank.console\\hourbank.console.csproj",
-        "packagesPath": "C:\\Users\\rborges\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\rborges\\Source\\Repo\\HourBank\\hourbank.console\\obj\\",
+        "projectPath": "C:\\Users\\TG456GS\\source\\repos\\HourBank\\hourbank.console\\hourbank.console.csproj",
+        "packagesPath": "C:\\Users\\TG456GS\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\TG456GS\\source\\repos\\HourBank\\hourbank.console\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\rborges\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\TG456GS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -37,6 +43,12 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "netcore-cmdline": {
+              "target": "Package",
+              "version": "[0.4.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

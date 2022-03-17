@@ -6,6 +6,7 @@ namespace HourBank.Models.Tasks
     public class SupportTask : BusinessTask
     {
         public int CaseSupportId { get; set; }
+        
     }
 
 }

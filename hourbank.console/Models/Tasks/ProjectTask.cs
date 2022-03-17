@@ -38,6 +38,9 @@ namespace HourBank.Models.Tasks
         {
             return $"Guid: {this.InstanceId}, Title: {this.Title}, Status: {this.CurrentStatus}, Project: {this.Project}";
         }
-
+        public override string ToLog()
+        {
+            return $"{DateTime.Now}: Guid: {this.InstanceId}, Title: {this.Title}, Status: {this.CurrentStatus}, Project: {this.Project}";
+        }
     }
 }

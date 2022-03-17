@@ -1,63 +1,25 @@
 ﻿using HourBank.Models.Tasks;
+using SearchAThing;
 
+//setup
+var repository = new FileRepository();
+var controller = new HourBankController(repository);
 
-// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
-
-//Create a list of tasks
-HourCounterService service = new HourCounterService();
-
-//Add some task
-service.AddTask(new ProjectTask {Title = "Remanejamento do banco de dados", Project = "Projeto A"});
-//Initialize the first task on the list
-service.Initialize(
-    service.TaskList[0]
-);
-//Start the task again
-service.Start(
-    service.TaskList[0]
-);
-//Pauses the task.
-service.Hold(
-    service.TaskList[0]
-);
-//Start the task again
-service.Start(
-    service.TaskList[0]
-);
-//End this task
-service.Terminate(
-    service.TaskList[0]
-);
-service.AddTask(new ProjectTask {Title = "Deploy de API no cliente", Project = "Projeto B"});
-service.Initialize(
-    service.TaskList[1]
-);
-//Start the task again
-service.Start(
-    service.TaskList[1]
-);
-//Pauses the task.
-service.Hold(
-    service.TaskList[1]
-);
-//Start the task again
-service.Start(
-    service.TaskList[1]
-);
-//End this task
-service.Terminate(
-    service.TaskList[1]
-);
-
-Console.WriteLine("Tasks: ");
-foreach (BusinessTask a in service.GetTaskList())
+CmdlineParser.Create("your hour database applicatin", (parser) =>
 {
-    Console.WriteLine(a.ToString());
-}
+    var init = parser.AddShort("init", "Initializes a repository in your profile");
+    // global flag with auto invoked action when matches that print usage for nested MatchParser
+    parser.AddShort("h", "show usage", null, (item) => item.MatchParser.PrintUsage());
 
-Console.WriteLine("Cycles: ");
-foreach (HourCycle c in service.GetHourCycleList())
-{
-    Console.WriteLine(c.ToString());
-}
+    parser.OnCmdlineMatch(() => 
+    {
+        if(init) try { 
+            controller.InitilizeRepository();}
+        catch (Exception e) {
+            System.Console.WriteLine(e.Message);
+        }
+    });
+
+    //call this once at toplevel parser only
+    parser.Run(args);
+});
