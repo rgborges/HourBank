@@ -41,11 +41,13 @@ namespace HourBank.Models.Tasks
         public DateTime EndDateTime { get; set; }
         /// <summary>
         /// Representa a estampa de tempo em que a tarefa foi atualizada pela última vez.
+        /// Atualizações ocorrerão toda vez em que for adicionado um ciclo de horas.
         /// </summary>
         /// <value></value>
-        public DateTime LastStatusChanged { get; set;}
+        public DateTime LastTimeUpdated { get; set;}
         /// <summary>
         /// Representa o status salvo na última mudança.
+        /// Atualizações ocorrerão toda vez em que for adicionado um ciclo de horas.
         /// </summary>
         /// <value></value>
         public BusinessTaskStatus LastStatus { get; set; }

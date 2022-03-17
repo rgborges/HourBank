@@ -62,7 +62,7 @@ namespace HourBank.Models.Tasks
             /// <param name="businessTask"></param>
             /// <returns></returns>
             DateTime currentStatusTime = DateTime.Now;
-            DateTime lastStatusTime = businessTask.LastStatusChanged;
+            DateTime lastStatusTime = businessTask.LastTimeUpdated;
             BusinessTaskStatus lastStatus = businessTask.LastStatus;
             BusinessTaskStatus currentStatus = incommingStatus;
             return new HourCycle(
@@ -98,7 +98,6 @@ namespace HourBank.Models.Tasks
             //Atualiza status da tarefa
             UpdateTaskStatus(businessTask, incoming_status);
         }
-
         public void Start(BusinessTask businessTask)
         {
             /// <summary>
@@ -111,7 +110,6 @@ namespace HourBank.Models.Tasks
             //Atualiza status desta tarefa
             UpdateTaskStatus(businessTask, BusinessTaskStatus.Running);
         }
-
         public void Hold(BusinessTask businessTask)
         {
              /// <summary>
@@ -161,7 +159,7 @@ namespace HourBank.Models.Tasks
             /// <summary>
             /// O último timestamp da mudança da tarefa assume o valor da propriedade que armazena o time corrente.
             /// </summary>
-            businessTask.LastStatusChanged = DateTime.Now;
+            businessTask.LastTimeUpdated = DateTime.Now;
 
         
         }
