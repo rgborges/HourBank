@@ -15,5 +15,16 @@ namespace HourBank.View.Display
             System.Console.Write("Digite o projeto: ");
             project  = Console.ReadLine();
         }
+        internal static void PrintError(string message)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"{DateTime.Now}:{message} [ERROR]");
+            Console.ResetColor();
+        }
+
+        internal static void PrintTaskCreated(Guid guid)
+        {
+            System.Console.WriteLine($"[info] - taks created with guid: {guid}");
+        }
     }
 }

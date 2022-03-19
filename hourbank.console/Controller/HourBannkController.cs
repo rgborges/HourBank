@@ -15,7 +15,7 @@ public class HourBankController
     }
     public Guid PostTask(string name)
     {
-        var incomeTask = new SupportTask()
+        var incomeTask = new ProjectTask()
         {
             Title = name,
             CurrentStatus = BusinessTaskStatus.Created,

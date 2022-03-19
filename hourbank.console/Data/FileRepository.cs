@@ -22,7 +22,14 @@ public class FileRepository : IRepository
             throw new NullReferenceException();
         }
         var btask = task as BusinessTask;
-        File.AppendText(btask?.ToString() ?? "error");
+        if(!File.Exists(this.GetTaskPath()))
+        {
+            File.Create(this.GetTaskPath());
+        }
+        using (StreamWriter sw = File.AppendText(this.GetTaskPath()))
+        {
+            sw.WriteLine($"{btask.ToLog()}");
+        }
         return btask.InstanceId;
     }
 
@@ -30,13 +37,13 @@ public class FileRepository : IRepository
     {
         return Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
     }
-    private string GetTaskDir()
+    private string GetTaskPath()
     {
-        return $"{GetWorkDir()}{Path.DirectorySeparatorChar}.tasks";
+        return $"{GetWorkDir()}{Path.DirectorySeparatorChar}hourbank{Path.DirectorySeparatorChar}.tasks";
     }
     
-    private string GetCycleDir()
+    private string GetCyclePath()
     {
-        return $"{GetWorkDir()}{Path.DirectorySeparatorChar}.cycles";
+        return $"{GetWorkDir()}{Path.DirectorySeparatorChar}hourbank{Path.DirectorySeparatorChar}.cycles";
     }
 }
