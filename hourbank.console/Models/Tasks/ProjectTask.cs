@@ -38,6 +38,17 @@ namespace HourBank.Models.Tasks
         {
             return $"Guid: {this.InstanceId}, Title: {this.Title}, Status: {this.CurrentStatus}, Project: {this.Project}";
         }
+        public string ToString(int option)
+        {
+            switch (option)
+            {
+                case 1:
+                    return $"{this.InstanceId}\t {this.Title}";
+                break;
+                default:
+                    return this.ToString();
+            }
+        }
         public override string ToLog()
         {
             return $"{DateTime.Now}: Guid: {this.InstanceId}, Title: {this.Title}, Status: {this.CurrentStatus}, Project: {this.Project}";

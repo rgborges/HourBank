@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "hourbank.console": {
+      "commandName": "Project",
+      "commandLineArgs": "task -n \"task a\""
+    }
+  }
+}

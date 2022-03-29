@@ -26,5 +26,27 @@ namespace HourBank.View.Display
         {
             System.Console.WriteLine($"[info] - taks created with guid: {guid}");
         }
+        internal static void PrintTaskStatus(string taskString)
+        {  
+            Console.Write("| ");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("+ ");
+            Console.ResetColor();
+            Console.WriteLine(taskString);
+        }
+        internal static void Print(string message)
+        {
+            System.Console.WriteLine(message);
+        }
+
+        internal static void PrintResult(SystemResult result)
+        {
+            if(result == SystemResult.Ok)
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("[ok] Data posted sucessfully");
+                Console.ResetColor();
+            }
+        }
     }
 }

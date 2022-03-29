@@ -1,9 +1,8 @@
 using HourBank.Models.Tasks;
 
-public class FileRepository : IRepository
+public class FileRepository
 {
     private string? _workDirectory;
-
     public void Create()
     {
         var path = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
@@ -14,7 +13,6 @@ public class FileRepository : IRepository
         File.Create(_workDirectory + $"{Path.DirectorySeparatorChar}.tasks");
         File.Create(_workDirectory + $"{Path.DirectorySeparatorChar}.cycles");
     }
-
     public Guid Save(object task)
     {
         if(task is not BusinessTask || task is null)
@@ -32,7 +30,20 @@ public class FileRepository : IRepository
         }
         return btask.InstanceId;
     }
-
+    public IEnumerable<String> GetAllTasks()
+    {
+        var result = new List<String>();
+        try {
+           string[] readText = File.ReadAllLines(GetTaskPath());
+           foreach (string s in readText)
+           {
+               result.Add(s);
+           }
+            return result;
+        } catch (IOException e){
+            throw e;
+        }
+    }
     private string GetWorkDir()
     {
         return Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
@@ -40,8 +51,7 @@ public class FileRepository : IRepository
     private string GetTaskPath()
     {
         return $"{GetWorkDir()}{Path.DirectorySeparatorChar}hourbank{Path.DirectorySeparatorChar}.tasks";
-    }
-    
+    }  
     private string GetCyclePath()
     {
         return $"{GetWorkDir()}{Path.DirectorySeparatorChar}hourbank{Path.DirectorySeparatorChar}.cycles";

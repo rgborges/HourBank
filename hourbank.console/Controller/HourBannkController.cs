@@ -11,19 +11,19 @@ public class HourBankController
     {
         ///Initializes a data storage local or remote to store the data.
         ///In the case of file we're gonna use txt files or csv format.
-        this.repository.Create();
-    }
-    public Guid PostTask(string name)
-    {
-        var incomeTask = new ProjectTask()
+        if(repository is FileRepository)
         {
-            Title = name,
-            CurrentStatus = BusinessTaskStatus.Created,
-            StartDateTime = DateTime.Now,
-            Priority = 5,
-        };
-        Guid result = this.repository.Save(incomeTask);
-        return result;
+            this.repository.Create();
+        }
+    }
+    public SystemResult PostTask(JobTaskData data)
+    {
+        if(repository is null) throw new NullReferenceException($"paramName:{data}");
+        return this.repository.PostTask(data);
     }
 
+    public IEnumerable<String> ShowStatus()
+    {
+       throw new NotImplementedException();
+    }
 }
