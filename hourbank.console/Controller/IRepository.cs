@@ -1,18 +1,21 @@
 
-public interface IRepository
+namespace HourBank.Controller
 {
-    void Create();
-    SystemResult PostTask(JobTaskData data);
-    SystemResult DeleteTask(int taskid);
-    SystemResult UpdateTask(JobTaskData task);
-    List<JobTaskData> GetAllTasks();
-    List<JobCycleData> GetAllCyclesFromTask(int id);
-    JobTaskData GetTask(int taskid);
-}
+    public interface IRepository<T>
+    {
+        void Create();
+        SystemResult PostTask(T data);
+        SystemResult DeleteTask(int taskid);
+        SystemResult UpdateTask(T task);
+        List<T> GetAllTasks();
+        List<T> GetAllCyclesFromTask(int id);
+        T GetTask(int taskid);
+    }
 
-public enum SystemResult
-{
-    Ok,
-    Fail,
-    Warn
+    public enum SystemResult
+    {
+        Ok,
+        Fail,
+        Warn
+    }
 }

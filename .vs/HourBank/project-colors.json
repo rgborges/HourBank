@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "5fd13f2b-dd35-44e3-b885-b9bebb0cc9f9": {
+      "ProjectGuid": "5fd13f2b-dd35-44e3-b885-b9bebb0cc9f9",
+      "DisplayName": "hourbank.console",
+      "ColorIndex": 0
+    },
+    "c8dd2be3-9087-4477-8602-d535dadf0a28": {
+      "ProjectGuid": "c8dd2be3-9087-4477-8602-d535dadf0a28",
+      "DisplayName": "hourbank.api",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}

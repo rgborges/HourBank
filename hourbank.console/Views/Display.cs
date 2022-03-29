@@ -1,3 +1,5 @@
+using HourBank.Controller;
+
 namespace HourBank.View.Display
 {
     public static class Display
@@ -47,6 +49,12 @@ namespace HourBank.View.Display
                 Console.WriteLine("[ok] Data posted sucessfully");
                 Console.ResetColor();
             }
+        }
+
+        internal static void PrintHelp()
+        {
+            //print help here
+            throw new NotImplementedException();
         }
     }
 }

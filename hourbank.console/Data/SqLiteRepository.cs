@@ -1,67 +1,45 @@
 using System.Linq;
-public class SqLiteRepository : IRepository
+using HourBank.Models;
+using HourBank.Models.Tasks;
+public class SqLiteRepository : IRepository<JobTaskData>
 {
-
+    private HourBankContext _context;
     public SqLiteRepository()
     {
+        _context = new HourBankContext();
+    }
+    public void Create()
+    {
+        
     }
 
-    void IRepository.Create()
+    public SystemResult DeleteTask(int taskid)
     {
         throw new NotImplementedException();
     }
 
-    SystemResult IRepository.DeleteTask(int taskid)
+    public List<JobTaskData> GetAllCyclesFromTask(int id)
     {
         throw new NotImplementedException();
     }
 
-    List<JobCycleData> IRepository.GetAllCyclesFromTask(int id)
+    public List<JobTaskData> GetAllTasks()
     {
         throw new NotImplementedException();
     }
 
-    List<JobTaskData> IRepository.GetAllTasks()
+    public JobTaskData GetTask(int taskid)
     {
         throw new NotImplementedException();
     }
 
-    JobTaskData IRepository.GetTask(int taskid)
+    public SystemResult PostTask(JobTaskData data)
     {
-        throw new NotImplementedException();
+        this._context.Tasks.Add(data);
     }
 
-    SystemResult IRepository.PostTask(JobTaskData data)
-    {
-        try 
-        {
-            using (HourBankContext db = new HourBankContext()) 
-            {
-                db.Tasks.Add(data);
-                db.SaveChanges();
-            }
-            return SystemResult.Ok;
-        }
-        catch (Exception e)
-        {
-            throw e;
-        }     
-    }
-
-    SystemResult IRepository.UpdateTask(JobTaskData task)
+    public SystemResult UpdateTask(JobTaskData task)
     {
         throw new NotImplementedException();
-    }
-    public int GetNewTaskId()
-    {
-        using(HourBankContext db = new HourBankContext())
-        {
-            var result = db.Tasks.Max().Id;
-            if(result == 0)
-            {
-                result = 1;
-            }
-            return result;
-        }
     }
 }
