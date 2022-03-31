@@ -44,7 +44,7 @@ namespace HourBank.Models.Tasks
             {
                 case 1:
                     return $"{this.InstanceId}\t {this.Title}";
-                break;
+                
                 default:
                     return this.ToString();
             }

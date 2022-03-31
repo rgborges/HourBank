@@ -11,12 +11,23 @@ namespace hourbank.console.Application
 {
     internal class StandardCLI
     {
-        private IRepository<JobTaskData> _repository;
-        private HourBankController<JobTaskData> controller;
+        private IRepository<JobTaskData>? repository;
+
+        public StandardCLI(IRepository<JobTaskData>? repository)
+        {
+            this.repository = repository;
+        }
+
+        private HourBankController<JobTaskData>? controller;
+
+        public StandardCLI()
+        {
+
+        }
         //configurations
         public StandardCLI SetRepository(IRepository<JobTaskData> repository)
         {
-            this.SetRepository(repository);
+            this.repository = repository;
             return this;
         }
         public StandardCLI SetController(HourBankController<JobTaskData> controller)
@@ -39,9 +50,16 @@ namespace hourbank.console.Application
                             // -n for name
                             // -p for priority
                             // -d for date (future)
-                            switch(args[2])
+                            var result = Display.NewTaskWizard();
+                            if (result is null) throw new NullReferenceException($"paramName: {result}");
+                            try
                             {
-
+                                var r = controller.Save(result);
+                                Display.Print(r.ToString());
+                            }
+                            catch (Exception ex)
+                            {
+                                Display.PrintError(ex.Message);
                             }
                             break;
                         case "cycle":
@@ -49,6 +67,14 @@ namespace hourbank.console.Application
                     }
                     break;
                 case "status":
+                    try
+                    {
+                        Display.PrintJobTaskDataLabel(controller.GetAllTasks());
+                    }
+                    catch(Exception ex)
+                    {
+                        Display.PrintError(ex.Message);
+                    }
                     break;
                 case "help":
                     break;

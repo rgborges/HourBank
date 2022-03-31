@@ -44,6 +44,9 @@ namespace hourbank.console.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<DateTime>("EndTime")
+                        .HasColumnType("TEXT");
+
                     b.Property<bool>("IsUrgent")
                         .HasColumnType("INTEGER");
 
@@ -53,6 +56,9 @@ namespace hourbank.console.Migrations
 
                     b.Property<int>("Prority")
                         .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("StartTime")
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("Status")
                         .HasColumnType("INTEGER");

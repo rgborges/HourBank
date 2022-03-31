@@ -1,9 +1,10 @@
 using System.Linq;
+using HourBank.Controller;
 using HourBank.Models;
 using HourBank.Models.Tasks;
 public class SqLiteRepository : IRepository<JobTaskData>
 {
-    private HourBankContext _context;
+    private readonly HourBankContext _context;
     public SqLiteRepository()
     {
         _context = new HourBankContext();
@@ -25,7 +26,7 @@ public class SqLiteRepository : IRepository<JobTaskData>
 
     public List<JobTaskData> GetAllTasks()
     {
-        throw new NotImplementedException();
+        return _context.Tasks.ToList<JobTaskData>();
     }
 
     public JobTaskData GetTask(int taskid)
@@ -35,7 +36,9 @@ public class SqLiteRepository : IRepository<JobTaskData>
 
     public SystemResult PostTask(JobTaskData data)
     {
-        this._context.Tasks.Add(data);
+        _context.Tasks.Add(data);
+        _context.SaveChanges();
+        return SystemResult.Ok;
     }
 
     public SystemResult UpdateTask(JobTaskData task)

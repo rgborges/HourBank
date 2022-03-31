@@ -2,7 +2,12 @@
   "profiles": {
     "hourbank.console": {
       "commandName": "Project",
-      "commandLineArgs": "task -n \"task a\""
+      "commandLineArgs": "status"
+    },
+    "WSL": {
+      "commandName": "WSL2",
+      "environmentVariables": {},
+      "distributionName": ""
     }
   }
 }

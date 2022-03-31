@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace hourbank.console.Migrations
 {
     [DbContext(typeof(HourBankContext))]
-    [Migration("20220329204648_JobStatus")]
-    partial class JobStatus
+    [Migration("20220331221053_InitialContext")]
+    partial class InitialContext
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -46,6 +46,9 @@ namespace hourbank.console.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<DateTime>("EndTime")
+                        .HasColumnType("TEXT");
+
                     b.Property<bool>("IsUrgent")
                         .HasColumnType("INTEGER");
 
@@ -55,6 +58,9 @@ namespace hourbank.console.Migrations
 
                     b.Property<int>("Prority")
                         .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("StartTime")
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("Status")
                         .HasColumnType("INTEGER");
