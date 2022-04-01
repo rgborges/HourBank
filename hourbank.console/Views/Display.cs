@@ -51,9 +51,9 @@ namespace HourBank.View.Display
         }
         internal static JobTaskData NewTaskWizard()
         {
-            Console.Write("Please type the task title: ");
+            Console.Write("Please type the task title ✍: ");
             var name = Console.ReadLine();
-            Console.Write("Please type a priority: ");
+            Console.Write("Please type a priority ✍: ");
             int priority = int.Parse(Console.ReadLine());
             return new JobTaskData { Name = name, Prority = priority, StartTime = DateTime.Now };
         }
@@ -69,6 +69,17 @@ namespace HourBank.View.Display
             }
             Console.WriteLine("-------------------------------------------------------------------------------------");
         }
+
+        internal static void PrintJobTaskDataLabel(JobTaskData task)
+        {
+
+            Console.WriteLine("-------------------------------------------------------------------------------------");
+            Console.Write($" {nameof(task.Id)}: {task.Id}, {nameof(task.Name)}: {task.Name}\n {nameof(task.Prority)}: ");
+            Display.PrintPriorityColored(task);
+            Console.WriteLine($"{nameof(task.Status)}: {task.Status}, {nameof(task.StartTime)}: {task.StartTime}");
+            Console.WriteLine("-------------------------------------------------------------------------------------");
+        }
+
         internal static void PrintPriorityColored(JobTaskData data)
         {
             if (data.Prority == 1)

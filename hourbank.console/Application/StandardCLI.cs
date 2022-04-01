@@ -64,6 +64,25 @@ namespace hourbank.console.Application
                             break;
                         case "cycle":
                             break;
+                        default:
+                            Display.PrintHelp();
+                            break;
+                    }
+                    break;
+                case "get":
+                    if (args.Length < 2)
+                    {
+                        Display.Print("Missing argument in get. The correct use is get [taskid]");
+                        return;
+                    }
+                    try
+                    {
+                       int idsearched = int.Parse(args[1]);
+                       Display.PrintJobTaskDataLabel(controller.GetTask(idsearched));
+                    }
+                    catch(Exception ex)
+                    {
+                        Display.PrintError(ex.Message);
                     }
                     break;
                 case "status":

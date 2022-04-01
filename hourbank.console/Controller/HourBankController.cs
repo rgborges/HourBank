@@ -23,4 +23,8 @@ public class HourBankController<T>
             yield return task;  
         }
     }
+    public T GetTask(int id)
+    {
+        return this.repository.GetTask(id);
+    }
 }

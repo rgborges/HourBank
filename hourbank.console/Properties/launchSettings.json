@@ -2,7 +2,7 @@
   "profiles": {
     "hourbank.console": {
       "commandName": "Project",
-      "commandLineArgs": "status"
+      "commandLineArgs": "get 1"
     },
     "WSL": {
       "commandName": "WSL2",

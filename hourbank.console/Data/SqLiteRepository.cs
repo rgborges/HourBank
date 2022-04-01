@@ -31,7 +31,7 @@ public class SqLiteRepository : IRepository<JobTaskData>
 
     public JobTaskData GetTask(int taskid)
     {
-        throw new NotImplementedException();
+        return _context.Tasks.Where(t => t.Id == taskid).FirstOrDefault();
     }
 
     public SystemResult PostTask(JobTaskData data)
@@ -43,6 +43,9 @@ public class SqLiteRepository : IRepository<JobTaskData>
 
     public SystemResult UpdateTask(JobTaskData task)
     {
-        throw new NotImplementedException();
+        if (task == null) return SystemResult.Fail;
+        _context.Tasks.Update(task);
+        return SystemResult.Ok;
     }
+   
 }
