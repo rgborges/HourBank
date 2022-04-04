@@ -16,7 +16,14 @@ public class SqLiteRepository : IRepository<JobTaskData>
 
     public SystemResult DeleteTask(int taskid)
     {
-        throw new NotImplementedException();
+        var task = this.GetTask(taskid);
+        if (task is null)
+        {
+            throw new NullReferenceException($"paramData:{nameof(task)}: Null value");
+        }
+        this._context.Tasks.Remove(task);
+        this._context.SaveChanges();
+        return SystemResult.Ok;
     }
 
     public List<JobTaskData> GetAllCyclesFromTask(int id)
@@ -47,5 +54,6 @@ public class SqLiteRepository : IRepository<JobTaskData>
         _context.Tasks.Update(task);
         return SystemResult.Ok;
     }
+ 
    
 }

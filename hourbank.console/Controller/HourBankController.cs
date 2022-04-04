@@ -27,4 +27,9 @@ public class HourBankController<T>
     {
         return this.repository.GetTask(id);
     }
+    public SystemResult Delete(int id)
+    {
+        this.repository.DeleteTask(id);
+        return SystemResult.Ok;
+    }
 }

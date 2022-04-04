@@ -1,12 +1,14 @@
 using HourBank.Controller;
+using static System.Console;
 
 namespace HourBank.View.Display
 {
     public static class Display
     {
+        private static string applicationName = "HourBank";
         public static void PrintLogo()
         {
-            Console.WriteLine("Borges Software Lab - HourBank Application");
+            WriteLine("Borges Software Lab - HourBank Application");
         }
         public static void AddNewProjectTask(ref string? name, ref string? project)
         {
@@ -16,6 +18,12 @@ namespace HourBank.View.Display
             System.Console.Write("Digite o projeto: ");
             project  = Console.ReadLine();
         }
+
+        internal static void PrintHeader()
+        {
+            Console.Write(@$"{applicationName}�🌌🪐�‍‍‍:");
+        }
+
         internal static void PrintError(string message)
         {
             Console.ForegroundColor = ConsoleColor.Red;
@@ -78,6 +86,17 @@ namespace HourBank.View.Display
             Display.PrintPriorityColored(task);
             Console.WriteLine($"{nameof(task.Status)}: {task.Status}, {nameof(task.StartTime)}: {task.StartTime}");
             Console.WriteLine("-------------------------------------------------------------------------------------");
+        }
+
+        internal static int PrintDeleteTaskWizard()
+        {
+            int id = 0;
+            do
+            {
+               Write("Select the task id you want to delete: ");
+               id = int.Parse(Console.ReadLine());
+            } while (id <= 0);
+            return id;
         }
 
         internal static void PrintPriorityColored(JobTaskData data)

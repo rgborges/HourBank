@@ -85,6 +85,18 @@ namespace hourbank.console.Application
                         Display.PrintError(ex.Message);
                     }
                     break;
+                case "delete":
+                    try
+                    {
+                        int idsearched = Display.PrintDeleteTaskWizard();
+                        var result = controller.Delete(idsearched);
+                        Display.Print(result.ToString());
+                    }
+                    catch (Exception ex)
+                    {
+                        Display.PrintError(ex.Message);
+                    }
+                    break;
                 case "status":
                     try
                     {
@@ -96,6 +108,7 @@ namespace hourbank.console.Application
                     }
                     break;
                 case "help":
+                    Display.PrintHelp();
                     break;
                 default:
                     Display.PrintHelp();
