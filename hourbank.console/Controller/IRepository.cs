@@ -16,6 +16,7 @@ namespace HourBank.Controller
     {
         Ok,
         Fail,
-        Warn
+        Warn,
+        Unknow
     }
 }

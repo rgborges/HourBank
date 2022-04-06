@@ -77,6 +77,19 @@ namespace HourBank.View.Display
             }
             Console.WriteLine("-------------------------------------------------------------------------------------");
         }
+        internal static void PrintJobTasksAsTables(IEnumerable<JobTaskData> tasks)
+        {
+            Console.WriteLine("+---------------------------------------------------------------------------+");
+            Console.WriteLine("|Name                        | Priority      | StartTime         | Status   |");
+            Console.WriteLine("+---------------------------------------------------------------------------+");
+            Console.WriteLine();
+            foreach ( var t in tasks)
+            {
+            Console.WriteLine($"{t.Name}                     |{t.Prority}   |{t.StartTime}      |{t.Status}");
+                Console.WriteLine("---------------------------------------------------------------------------");
+            }
+            Console.WriteLine("+---------------------------------------------------------------------------+");
+        }
 
         internal static void PrintJobTaskDataLabel(JobTaskData task)
         {

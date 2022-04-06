@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "rtVHEdS1Q4BMDuJDe5HGJz9ypRWStS2f6l8uJnic5B5uwm3sGP6n0wUTbSbgNhdOkgeawM91JAQINsbnwx+0xw==",
+  "dgSpecHash": "JbE9kjzS8TXDR0/WZoJhKDmWJ8Ion8TX+VgYHVXE8k0rzYecbosLZbfFsAdCUvGId5qaB4t10idrW7Po06AeYg==",
   "success": true,
   "projectFilePath": "C:\\Users\\TG456GS\\source\\repos\\HourBank\\hourbank.console\\hourbank.console.csproj",
   "expectedPackageFiles": [
@@ -29,6 +29,7 @@
     "C:\\Users\\TG456GS\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Users\\TG456GS\\.nuget\\packages\\npgsql\\6.0.1\\npgsql.6.0.1.nupkg.sha512",
     "C:\\Users\\TG456GS\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\6.0.1\\npgsql.entityframeworkcore.postgresql.6.0.1.nupkg.sha512",
+    "C:\\Users\\TG456GS\\.nuget\\packages\\spectre.console\\0.44.0\\spectre.console.0.44.0.nupkg.sha512",
     "C:\\Users\\TG456GS\\.nuget\\packages\\sqlitepclraw.bundle_e_sqlite3\\2.0.6\\sqlitepclraw.bundle_e_sqlite3.2.0.6.nupkg.sha512",
     "C:\\Users\\TG456GS\\.nuget\\packages\\sqlitepclraw.core\\2.0.6\\sqlitepclraw.core.2.0.6.nupkg.sha512",
     "C:\\Users\\TG456GS\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.0.6\\sqlitepclraw.lib.e_sqlite3.2.0.6.nupkg.sha512",

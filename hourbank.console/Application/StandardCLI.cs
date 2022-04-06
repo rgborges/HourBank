@@ -11,6 +11,9 @@ namespace hourbank.console.Application
 {
     internal class StandardCLI
     {
+        private int tempid = 0;
+        private JobTaskData tempTaskData = null;
+        private SystemResult tempResult = SystemResult.Unknow;
         private IRepository<JobTaskData>? repository;
 
         public StandardCLI(IRepository<JobTaskData>? repository)
@@ -54,8 +57,9 @@ namespace hourbank.console.Application
                             if (result is null) throw new NullReferenceException($"paramName: {result}");
                             try
                             {
-                                var r = controller.Save(result);
-                                Display.Print(r.ToString());
+                                tempResult = controller.Save(result);
+                                Display.Print(tempResult.ToString());
+                                tempResult = SystemResult.Unknow;
                             }
                             catch (Exception ex)
                             {
@@ -88,9 +92,10 @@ namespace hourbank.console.Application
                 case "delete":
                     try
                     {
-                        int idsearched = Display.PrintDeleteTaskWizard();
-                        var result = controller.Delete(idsearched);
-                        Display.Print(result.ToString());
+                        tempid = Display.PrintDeleteTaskWizard();
+                        tempResult = controller.Delete(tempid);
+                        Display.Print(tempResult.ToString());
+                        tempResult = SystemResult.Unknow;
                     }
                     catch (Exception ex)
                     {
@@ -100,6 +105,7 @@ namespace hourbank.console.Application
                 case "status":
                     try
                     {
+                        //Display.PrintJobTasksAsTables(controller.GetAllTasks());
                         Display.PrintJobTaskDataLabel(controller.GetAllTasks());
                     }
                     catch(Exception ex)

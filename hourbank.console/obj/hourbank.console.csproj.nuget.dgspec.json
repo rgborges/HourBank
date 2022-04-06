@@ -54,6 +54,10 @@
               "target": "Package",
               "version": "[6.0.3, )"
             },
+            "Spectre.Console": {
+              "target": "Package",
+              "version": "[0.44.0, )"
+            },
             "netcore-cmdline": {
               "target": "Package",
               "version": "[0.4.0, )"
