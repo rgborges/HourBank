@@ -105,8 +105,8 @@ namespace hourbank.console.Application
                 case "status":
                     try
                     {
-                        //Display.PrintJobTasksAsTables(controller.GetAllTasks());
-                        Display.PrintJobTaskDataLabel(controller.GetAllTasks());
+                        Display.PrintJobTasksAsTables(controller.GetAllTasks());
+                        //Display.PrintJobTaskDataLabel(controller.GetAllTasks());
                     }
                     catch(Exception ex)
                     {

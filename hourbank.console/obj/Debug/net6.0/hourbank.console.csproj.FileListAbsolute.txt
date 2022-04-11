@@ -86,3 +86,4 @@ C:\Users\TG456GS\source\repos\HourBank\hourbank.console\bin\Debug\net6.0\runtime
 C:\Users\TG456GS\source\repos\HourBank\hourbank.console\bin\Debug\net6.0\Humanizer.dll
 C:\Users\TG456GS\source\repos\HourBank\hourbank.console\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
 C:\Users\TG456GS\source\repos\HourBank\hourbank.console\bin\Debug\net6.0\hourbank.console.dll.config
+C:\Users\TG456GS\source\repos\HourBank\hourbank.console\bin\Debug\net6.0\Spectre.Console.dll

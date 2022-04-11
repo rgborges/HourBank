@@ -3,6 +3,7 @@ using HourBank.View.Display;
 using hourbank.console.Application;
 
 
+
 var repository = new SqLiteRepository();
 var controller = new HourBankController<JobTaskData>(repository);
 
@@ -11,11 +12,11 @@ cli.SetController(controller);
 cli.SetRepository(repository);
 if (args[0] == "-i")
 {
-    while(true)
+    while (true)
     {
         Display.PrintHeader();
         string[] iargs = Console.ReadLine().Split(' ');
-        if(iargs[0] == "exit")
+        if (iargs[0] == "exit")
         {
             break;
         }

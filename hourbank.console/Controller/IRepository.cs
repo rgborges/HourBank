@@ -10,6 +10,7 @@ namespace HourBank.Controller
         List<T> GetAllTasks();
         List<T> GetAllCyclesFromTask(int id);
         T GetTask(int taskid);
+        void UpdateTask<T>(int id, T? task);
     }
 
     public enum SystemResult

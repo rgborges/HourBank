@@ -54,6 +54,9 @@ public class SqLiteRepository : IRepository<JobTaskData>
         _context.Tasks.Update(task);
         return SystemResult.Ok;
     }
- 
-   
+
+    public void UpdateTask<T>(int id, T? task)
+    {
+        throw new NotImplementedException();
+    }
 }

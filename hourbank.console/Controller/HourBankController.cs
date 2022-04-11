@@ -32,4 +32,9 @@ public class HourBankController<T>
         this.repository.DeleteTask(id);
         return SystemResult.Ok;
     }
+    public SystemResult UpdateTask(int id, T task)
+    {
+        this.repository.UpdateTask(id, task);
+        return SystemResult.Ok;
+    }
 }

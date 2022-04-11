@@ -1,4 +1,5 @@
 using HourBank.Controller;
+using Spectre.Console;
 using static System.Console;
 
 namespace HourBank.View.Display
@@ -21,7 +22,7 @@ namespace HourBank.View.Display
 
         internal static void PrintHeader()
         {
-            Console.Write(@$"{applicationName}�🌌🪐�‍‍‍:");
+            Console.Write(@$"{applicationName}🌌🪐:");
         }
 
         internal static void PrintError(string message)
@@ -36,7 +37,7 @@ namespace HourBank.View.Display
             System.Console.WriteLine($"[info] - taks created with guid: {guid}");
         }
         internal static void PrintTaskStatus(string taskString)
-        {  
+        {
             Console.Write("| ");
             Console.ForegroundColor = ConsoleColor.Green;
             Console.Write("+ ");
@@ -67,7 +68,7 @@ namespace HourBank.View.Display
         }
         internal static void PrintJobTaskDataLabel(IEnumerable<JobTaskData> tasks)
         {
-            
+
             foreach (var t in tasks)
             {
                 Console.WriteLine("-------------------------------------------------------------------------------------");
@@ -79,16 +80,22 @@ namespace HourBank.View.Display
         }
         internal static void PrintJobTasksAsTables(IEnumerable<JobTaskData> tasks)
         {
-            Console.WriteLine("+---------------------------------------------------------------------------+");
-            Console.WriteLine("|Name                        | Priority      | StartTime         | Status   |");
-            Console.WriteLine("+---------------------------------------------------------------------------+");
-            Console.WriteLine();
-            foreach ( var t in tasks)
+            var table = new Table();
+            table.AddColumn("Name");
+            table.AddColumn("Priority");
+            table.AddColumn("Status");
+            table.AddColumn("StartTime");
+
+            table.Border(TableBorder.Ascii);
+            foreach (JobTaskData t in tasks)
             {
-            Console.WriteLine($"{t.Name}                     |{t.Prority}   |{t.StartTime}      |{t.Status}");
-                Console.WriteLine("---------------------------------------------------------------------------");
+                string name = t.Name;
+                string status = t.Status.ToString();
+                string priority = t.Prority.ToString();
+                string time = t.StartTime.ToString();
+                table.AddRow(name.EscapeMarkup(), priority.EscapeMarkup(), status.EscapeMarkup(), time.EscapeMarkup());
             }
-            Console.WriteLine("+---------------------------------------------------------------------------+");
+            AnsiConsole.Write(table);
         }
 
         internal static void PrintJobTaskDataLabel(JobTaskData task)
@@ -133,7 +140,26 @@ namespace HourBank.View.Display
                 Console.ResetColor();
             }
         }
+        internal static void TestSpectre()
+        {
+            // Markup
+            // Constant
+            var hello = "Hello " + Emoji.Known.GlobeShowingEuropeAfrica;
+            AnsiConsole.MarkupLine($"{hello}");
+            AnsiConsole.MarkupLine("Hello :globe_showing_europe_africa:!");
 
+            var newtask = new JobTaskData { Name = "task teste", Prority = 1, Status = Models.Tasks.BusinessTaskStatus.Created };
+
+            var table = new Table();
+            table.Border(TableBorder.Rounded);
+            table.AddColumn("Name");
+            table.AddColumn("Priority");
+
+            table.AddRow(newtask.Name.ToString(), newtask.Prority.ToString());
+
+            AnsiConsole.Write(table);
+
+        }
         internal static void PrintHelp()
         {
             Console.WriteLine("Hourbank app for command line users.");
