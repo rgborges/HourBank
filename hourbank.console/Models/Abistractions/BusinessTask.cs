@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 
 namespace HourBank.Models.Tasks
 {
     /// <summary>
     /// Uma atividade de negócio é uma classe abstrata para uma tarefa de projeto, suporte, treinamento.
     /// </summary>
+    [Keyless]
     public abstract class BusinessTask
     {
+        public int Id { get; set; }
         /// <summary>
         /// Propriedade armazena um GUID (Identificador único universal).
         /// </summary>
@@ -50,6 +53,9 @@ namespace HourBank.Models.Tasks
         /// <value></value>
         public BusinessTaskStatus LastStatus { get; set; }
 
+        public virtual string ToLog(){
+            return this.ToString() ?? "Error in parsing the object to string";
+        }
     }
 
 }

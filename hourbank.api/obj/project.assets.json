@@ -8,24 +8,31 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\rborges\\.nuget\\packages\\": {}
+    "C:\\Users\\TG456GS\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "Y:\\CodeLab\\HourBank\\hourbank.api\\hourbank.api.csproj",
+      "projectUniqueName": "C:\\Users\\TG456GS\\source\\repos\\HourBank\\hourbank.api\\hourbank.api.csproj",
       "projectName": "hourbank.api",
-      "projectPath": "Y:\\CodeLab\\HourBank\\hourbank.api\\hourbank.api.csproj",
-      "packagesPath": "C:\\Users\\rborges\\.nuget\\packages\\",
-      "outputPath": "Y:\\CodeLab\\HourBank\\hourbank.api\\obj\\",
+      "projectPath": "C:\\Users\\TG456GS\\source\\repos\\HourBank\\hourbank.api\\hourbank.api.csproj",
+      "packagesPath": "C:\\Users\\TG456GS\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\TG456GS\\source\\repos\\HourBank\\hourbank.api\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\rborges\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\TG456GS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -61,7 +68,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }

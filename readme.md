@@ -1,9 +1,24 @@
-# Início #
+# Get Started
+
 This project is just starting it
 
+Initialize a repository
+```
+hourbank init
+```
 
+Create a new task and set as a current
+```
+hourbank new task "this is new task"
+```
 
-# TODO #
-* Create the abstractions of tasks;
-* Create concrete classes;
-* Test a list with both classes
+Start the current task
+```
+hourbank start task
+```
+
+## Issues
+
+- Solve the Business Task abistraction.
+- Make work with Enity Framework Core and SqLite.
+- Implement Crud in command line and in the storeage layer using the repository.

@@ -1,63 +1,28 @@
 ﻿using HourBank.Models.Tasks;
+using HourBank.View.Display;
+using hourbank.console.Application;
 
 
-// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
 
-//Create a list of tasks
-HourCounterService service = new HourCounterService();
+var repository = new SqLiteRepository();
+var controller = new HourBankController<JobTaskData>(repository);
 
-//Add some task
-service.AddTask(new ProjectTask {Title = "Remanejamento do banco de dados", Project = "Projeto A"});
-//Initialize the first task on the list
-service.Initialize(
-    service.TaskList[0]
-);
-//Start the task again
-service.Start(
-    service.TaskList[0]
-);
-//Pauses the task.
-service.Hold(
-    service.TaskList[0]
-);
-//Start the task again
-service.Start(
-    service.TaskList[0]
-);
-//End this task
-service.Terminate(
-    service.TaskList[0]
-);
-service.AddTask(new ProjectTask {Title = "Deploy de API no cliente", Project = "Projeto B"});
-service.Initialize(
-    service.TaskList[1]
-);
-//Start the task again
-service.Start(
-    service.TaskList[1]
-);
-//Pauses the task.
-service.Hold(
-    service.TaskList[1]
-);
-//Start the task again
-service.Start(
-    service.TaskList[1]
-);
-//End this task
-service.Terminate(
-    service.TaskList[1]
-);
-
-Console.WriteLine("Tasks: ");
-foreach (BusinessTask a in service.GetTaskList())
+var cli = new StandardCLI();
+cli.SetController(controller);
+cli.SetRepository(repository);
+if (args[0] == "-i")
 {
-    Console.WriteLine(a.ToString());
+    while (true)
+    {
+        Display.PrintHeader();
+        string[] iargs = Console.ReadLine().Split(' ');
+        if (iargs[0] == "exit")
+        {
+            break;
+        }
+        cli.Run(iargs);
+    }
+    return;
 }
 
-Console.WriteLine("Cycles: ");
-foreach (HourCycle c in service.GetHourCycleList())
-{
-    Console.WriteLine(c.ToString());
-}
+cli.Run(args);

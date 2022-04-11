@@ -1,0 +1,13 @@
+{
+  "profiles": {
+    "hourbank.console": {
+      "commandName": "Project",
+      "commandLineArgs": "-i"
+    },
+    "WSL": {
+      "commandName": "WSL2",
+      "environmentVariables": {},
+      "distributionName": ""
+    }
+  }
+}

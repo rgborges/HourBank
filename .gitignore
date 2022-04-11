@@ -2,3 +2,5 @@ bin
 cache
 editorconfig
 /bin/
+[Bb]in
+[Oo]bj
