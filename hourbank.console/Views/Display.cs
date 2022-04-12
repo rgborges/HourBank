@@ -46,6 +46,8 @@ namespace HourBank.View.Display
         }
         internal static void Print(string message)
         {
+            System.Console.Clear();
+            Display.PrintHeader();
             System.Console.WriteLine(message);
         }
 
@@ -97,6 +99,27 @@ namespace HourBank.View.Display
             }
             AnsiConsole.Write(table);
         }
+          internal static void PrintJobTasksAsTablesWithId(IEnumerable<JobTaskData> tasks)
+        {
+            var table = new Table();
+            table.AddColumn("Id");
+            table.AddColumn("Name");
+            table.AddColumn("Priority");
+            table.AddColumn("Status");
+            table.AddColumn("StartTime");
+
+            table.Border(TableBorder.Ascii);
+            foreach (JobTaskData t in tasks)
+            {
+                string id = t.Id.ToString();
+                string name = t.Name;
+                string status = t.Status.ToString();
+                string priority = t.Prority.ToString();
+                string time = t.StartTime.ToString();
+                table.AddRow(id.EscapeMarkup(),name.EscapeMarkup(), priority.EscapeMarkup(), status.EscapeMarkup(), time.EscapeMarkup());
+            }
+            AnsiConsole.Write(table);
+        }
 
         internal static void PrintJobTaskDataLabel(JobTaskData task)
         {
@@ -106,6 +129,21 @@ namespace HourBank.View.Display
             Display.PrintPriorityColored(task);
             Console.WriteLine($"{nameof(task.Status)}: {task.Status}, {nameof(task.StartTime)}: {task.StartTime}");
             Console.WriteLine("-------------------------------------------------------------------------------------");
+        }
+
+        internal static JobTaskData PrintSelectTaskWizard(IHourBankController<JobTaskData> controller)
+        {
+            JobTaskData result = null;
+            do
+            {
+                PrintJobTasksAsTablesWithId(controller.GetAllTasks());
+                System.Console.Write("Please select the task id: ");
+                int id = int.Parse(Console.ReadLine());
+                result = controller.GetTask(id);
+
+            }while(result is null);
+            //Print a wizard to select a task and needs to return a task
+            return result;
         }
 
         internal static int PrintDeleteTaskWizard()

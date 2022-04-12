@@ -1,20 +1,24 @@
 using HourBank.Controller;
 using HourBank.Models.Tasks;
 
-public class HourBankController<T>
+public class HourBankController<T> : IHourBankController<T>
 {
     private readonly IRepository<T> repository;
     public HourBankController(IRepository<T> repository)
     {
         this.repository = repository;
     }
+
+    public HourBankController()
+    {
+    }
+
     public SystemResult Save(T t)
     {
         //POST
         var  r = repository.PostTask(t);
         return r;
     }
-
     public IEnumerable<T> GetAllTasks()
     {
         IEnumerable<T> result = repository.GetAllTasks();

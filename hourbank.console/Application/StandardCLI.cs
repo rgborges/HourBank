@@ -102,6 +102,16 @@ namespace hourbank.console.Application
                         Display.PrintError(ex.Message);
                     }
                     break;
+                case "start":
+                    switch(args[1])
+                    {
+                        case "task":
+                        //Start a task - goes to a wizard to select task and update this task to state start
+                        this.tempTaskData = Display.PrintSelectTaskWizard(controller);
+                        Display.Print($"You selected {tempTaskData.Name}");
+                            break;
+                    }
+                    break;
                 case "status":
                     try
                     {
