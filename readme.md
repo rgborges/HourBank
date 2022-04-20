@@ -16,6 +16,10 @@ Start the current task
 ```
 hourbank start task
 ```
+## Hourbank console
+
+
+Hourbank console is a standalone console app destinated to who operates via console.
 
 ## Issues
 

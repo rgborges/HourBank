@@ -4,3 +4,6 @@ editorconfig
 /bin/
 [Bb]in
 [Oo]bj
+*.dll
+.vs
+.vscode

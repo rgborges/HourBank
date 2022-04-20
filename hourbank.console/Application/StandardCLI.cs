@@ -9,13 +9,12 @@ using HourBank.View.Display;
 
 namespace hourbank.console.Application
 {
-    internal class StandardCLI
+    internal class StandardCLI : ICLI
     {
         private int tempid = 0;
         private JobTaskData tempTaskData = null;
         private SystemResult tempResult = SystemResult.Unknow;
         private IRepository<JobTaskData>? repository;
-
         public StandardCLI(IRepository<JobTaskData>? repository)
         {
             this.repository = repository;
@@ -38,7 +37,6 @@ namespace hourbank.console.Application
             this.controller = controller;
             return this;
         }
-
 
         public void Run(string[] args)
         {
@@ -102,16 +100,28 @@ namespace hourbank.console.Application
                         Display.PrintError(ex.Message);
                     }
                     break;
+                case "set":
+                    switch(args[1])
+                    {
+                        case "task":
+                        //Start a task - goes to a wizard to select task and update this task to state start
+                        this.tempTaskData = Display.PrintSelectTaskWizard(controller);
+                        Display.Print($"You selected {tempTaskData.Name}!");
+                            break;
+                    }
+                    break;
                 case "status":
                     try
                     {
                         Display.PrintJobTasksAsTables(controller.GetAllTasks());
-                        //Display.PrintJobTaskDataLabel(controller.GetAllTasks());
                     }
                     catch(Exception ex)
                     {
                         Display.PrintError(ex.Message);
                     }
+                    break;
+                case "clear":
+                    Display.Clear();
                     break;
                 case "help":
                     Display.PrintHelp();
