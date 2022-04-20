@@ -1,11 +1,11 @@
 ﻿using HourBank.Models.Tasks;
 using HourBank.View.Display;
 using hourbank.console.Application;
-
-
+using System.Configuration;
 
 var repository = new SqLiteRepository();
 var controller = new HourBankController<JobTaskData>(repository);
+
 
 var cli = new StandardCLI();
 cli.SetController(controller);

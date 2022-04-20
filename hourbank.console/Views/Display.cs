@@ -1,3 +1,4 @@
+using hourbank.console.Controller;
 using HourBank.Controller;
 using Spectre.Console;
 using static System.Console;
@@ -97,6 +98,42 @@ namespace HourBank.View.Display
             }
             AnsiConsole.Write(table);
         }
+        internal static void PrintJobTasksAsTablesWithId(IEnumerable<JobTaskData> tasks)
+        {
+            var table = new Table();
+            table.AddColumn("Id");
+            table.AddColumn("Name");
+            table.AddColumn("Priority");
+            table.AddColumn("Status");
+            table.AddColumn("StartTime");
+
+            table.Border(TableBorder.Ascii);
+            foreach (JobTaskData t in tasks)
+            {
+                string id = t.Id.ToString();
+                string name = t.Name;
+                string status = t.Status.ToString();
+                string priority = t.Prority.ToString();
+                string time = t.StartTime.ToString();
+                table.AddRow(id.EscapeMarkup(), name.EscapeMarkup(), priority.EscapeMarkup(), status.EscapeMarkup(), time.EscapeMarkup());
+            }
+            AnsiConsole.Write(table);
+        }
+
+        internal static JobTaskData PrintSelectATaskWizard(IConsoleController<JobTaskData> controller)
+        {
+            //needs to guide the user for a interface to select a task and return this task.
+            //I think we need to pass the context avoiding passing the 
+            JobTaskData result = null;
+            do
+            {
+                Display.PrintJobTasksAsTablesWithId(controller.GetAllTasks());
+                WriteLine("Please select a task id: ");
+                int idSearched = int.Parse(ReadLine());
+                result = controller.GetTask(idSearched);
+            } while (result is null);
+            return result;
+        }
 
         internal static void PrintJobTaskDataLabel(JobTaskData task)
         {
@@ -159,6 +196,10 @@ namespace HourBank.View.Display
 
             AnsiConsole.Write(table);
 
+        }
+        internal static void Clear()
+        {
+            Console.Clear();
         }
         internal static void PrintHelp()
         {

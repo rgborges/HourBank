@@ -89,6 +89,24 @@ namespace hourbank.console.Application
                         Display.PrintError(ex.Message);
                     }
                     break;
+                case "set":
+                    if(args.Length >= 2)
+                    {
+                        switch(args[1])
+                        {
+                            case "task":
+                                //reach the set task command. Set command needs to search in the database for a jobtask record
+                                //and keep it in memory on CLI class
+                                tempTaskData = Display.PrintSelectATaskWizard(controller);
+                                if (tempTaskData is null)
+                                {
+                                    throw new Exception("None task found with id passed.");
+                                }
+                                Display.Print($"Task: {tempTaskData.Name} selected. [Ok] ");
+                                break;
+                        }
+                    }
+                    break;
                 case "delete":
                     try
                     {
@@ -112,6 +130,9 @@ namespace hourbank.console.Application
                     {
                         Display.PrintError(ex.Message);
                     }
+                    break;
+                case "clear":
+                    Display.Clear();
                     break;
                 case "help":
                     Display.PrintHelp();
