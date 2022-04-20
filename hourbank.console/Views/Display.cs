@@ -24,6 +24,10 @@ namespace HourBank.View.Display
         {
             Console.Write(@$"{applicationName}🌌🪐:");
         }
+        internal static void PrintHeader(JobTaskData task)
+        {
+            Console.Write(@$"{applicationName}🌌🪐>{task.Name}:");
+        }
 
         internal static void PrintError(string message)
         {
@@ -197,6 +201,10 @@ namespace HourBank.View.Display
 
             AnsiConsole.Write(table);
 
+        }
+        internal static void Clear()
+        {
+            Console.Clear();
         }
         internal static void PrintHelp()
         {
