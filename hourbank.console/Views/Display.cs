@@ -1,7 +1,8 @@
-using hourbank.console.Controller;
-using HourBank.Controller;
 using Spectre.Console;
+using HourBank.Controller;
+using hourbank.console.Controller;
 using static System.Console;
+using hourbank.console.Application;
 
 namespace HourBank.View.Display
 {
@@ -24,6 +25,17 @@ namespace HourBank.View.Display
         internal static void PrintHeader()
         {
             Console.Write(@$"{applicationName}🌌🪐:");
+        }
+        internal static void PrintHeader(IConsoleUpdateItem<JobTaskData> cli)
+        {
+            if(cli.IsSelected())
+            {
+                Write(@$"{applicationName}\{cli.getItemSelected().Name}🌌🪐:");
+            }
+            else
+            {
+                Write(@$"{applicationName}🌌🪐:");
+            }
         }
 
         internal static void PrintError(string message)
@@ -124,15 +136,22 @@ namespace HourBank.View.Display
         {
             //needs to guide the user for a interface to select a task and return this task.
             //I think we need to pass the context avoiding passing the 
-            JobTaskData result = null;
-            do
+            try
             {
-                Display.PrintJobTasksAsTablesWithId(controller.GetAllTasks());
-                WriteLine("Please select a task id: ");
-                int idSearched = int.Parse(ReadLine());
-                result = controller.GetTask(idSearched);
-            } while (result is null);
-            return result;
+                JobTaskData result = null;
+                do
+                {
+                    Display.PrintJobTasksAsTablesWithId(controller.GetAllTasks());
+                    Write("Please select a task id: ");
+                    int idSearched = int.Parse(ReadLine());
+                    result = controller.GetTask(idSearched);
+                } while (result is null);
+                return result;
+            }
+            catch(Exception exp)
+            {
+                throw new ApplicationException(exp.Message);
+            }
         }
 
         internal static void PrintJobTaskDataLabel(JobTaskData task)

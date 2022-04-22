@@ -9,25 +9,25 @@ using HourBank.View.Display;
 
 namespace hourbank.console.Application
 {
-    internal class StandardCLI
+    internal class StandardCLI : IConsoleUpdateItem<JobTaskData>
     {
         private int tempid = 0;
         private JobTaskData tempTaskData = null;
         private SystemResult tempResult = SystemResult.Unknow;
         private IRepository<JobTaskData>? repository;
-
-        public StandardCLI(IRepository<JobTaskData>? repository)
-        {
-            this.repository = repository;
-        }
-
         private HourBankController<JobTaskData>? controller;
+
+     
 
         public StandardCLI()
         {
 
         }
         //configurations
+        public StandardCLI(IRepository<JobTaskData>? repository)
+        {
+            this.repository = repository;
+        }
         public StandardCLI SetRepository(IRepository<JobTaskData> repository)
         {
             this.repository = repository;
@@ -38,7 +38,6 @@ namespace hourbank.console.Application
             this.controller = controller;
             return this;
         }
-
 
         public void Run(string[] args)
         {
@@ -97,12 +96,19 @@ namespace hourbank.console.Application
                             case "task":
                                 //reach the set task command. Set command needs to search in the database for a jobtask record
                                 //and keep it in memory on CLI class
-                                tempTaskData = Display.PrintSelectATaskWizard(controller);
-                                if (tempTaskData is null)
+                                try
                                 {
-                                    throw new Exception("None task found with id passed.");
+                                    tempTaskData = Display.PrintSelectATaskWizard(controller);
+                                    if (tempTaskData is null)
+                                    {
+                                        throw new Exception("None task found with id passed.");
+                                    }
+                                    Display.Print($"Task: {tempTaskData.Name} selected. [Ok] ");
                                 }
-                                Display.Print($"Task: {tempTaskData.Name} selected. [Ok] ");
+                                catch (ApplicationException exp)
+                                {
+                                    Display.PrintError(exp.Message);
+                                }
                                 break;
                         }
                     }
@@ -141,6 +147,20 @@ namespace hourbank.console.Application
                     Display.PrintHelp();
                     break;
             }
+        }
+
+        public bool IsSelected()
+        {
+            if (tempTaskData is null) return false;
+            else
+            {
+                return true;
+            }
+        }
+
+        public JobTaskData getItemSelected()
+        {
+            return this.tempTaskData;
         }
     }
 }

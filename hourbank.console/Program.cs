@@ -14,7 +14,7 @@ if (args[0] == "-i")
 {
     while (true)
     {
-        Display.PrintHeader();
+        Display.PrintHeader(cli);
         string[] iargs = Console.ReadLine().Split(' ');
         if (iargs[0] == "exit")
         {
