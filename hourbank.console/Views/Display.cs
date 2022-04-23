@@ -91,8 +91,15 @@ namespace HourBank.View.Display
             }
             Console.WriteLine("-------------------------------------------------------------------------------------");
         }
+        private static void PrintElapsedTime(DateTime start, DateTime end)
+        {
+            Console.Write("Time: ");
+            AnsiConsole.Write(new Markup($"[bold blue]{end.Subtract(start).Milliseconds} ms [/]"));
+            AnsiConsole.MarkupLine(":alarm_clock: \n");
+        }
         internal static void PrintJobTasksAsTables(IEnumerable<JobTaskData> tasks)
         {
+            DateTime startCmdStartTime = DateTime.Now;
             var table = new Table();
             table.AddColumn("Name");
             table.AddColumn("Priority");
@@ -109,6 +116,9 @@ namespace HourBank.View.Display
                 table.AddRow(name.EscapeMarkup(), priority.EscapeMarkup(), status.EscapeMarkup(), time.EscapeMarkup());
             }
             AnsiConsole.Write(table);
+            DateTime endCmdStartTime = DateTime.Now;
+            PrintElapsedTime(startCmdStartTime, endCmdStartTime);
+            
         }
         internal static void PrintJobTasksAsTablesWithId(IEnumerable<JobTaskData> tasks)
         {
@@ -156,12 +166,14 @@ namespace HourBank.View.Display
 
         internal static void PrintJobTaskDataLabel(JobTaskData task)
         {
-
+            DateTime startCmdTime = DateTime.Now;
             Console.WriteLine("-------------------------------------------------------------------------------------");
             Console.Write($" {nameof(task.Id)}: {task.Id}, {nameof(task.Name)}: {task.Name}\n {nameof(task.Prority)}: ");
             Display.PrintPriorityColored(task);
             Console.WriteLine($"{nameof(task.Status)}: {task.Status}, {nameof(task.StartTime)}: {task.StartTime}");
             Console.WriteLine("-------------------------------------------------------------------------------------");
+            DateTime endCmdTime = DateTime.Now;
+            AnsiConsole.Write(new Markup($"[bold blue]{endCmdTime.Subtract(startCmdTime)}[/]"));
         }
 
         internal static int PrintDeleteTaskWizard()
