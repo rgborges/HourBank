@@ -4,3 +4,8 @@ editorconfig
 /bin/
 [Bb]in
 [Oo]bj
+.vs/
+*.v2
+*.v1
+*.db
+*.cache

@@ -42,7 +42,7 @@ namespace hourbank.console.Application
         public void Run(string[] args)
         {
             //running
-            switch(args[0])
+            switch (args[0])
             {
                 case "new":
                     switch (args[1])
@@ -80,18 +80,18 @@ namespace hourbank.console.Application
                     }
                     try
                     {
-                       int idsearched = int.Parse(args[1]);
-                       Display.PrintJobTaskDataLabel(controller.GetTask(idsearched));
+                        int idsearched = int.Parse(args[1]);
+                        Display.PrintJobTaskDataLabel(controller.GetTask(idsearched));
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         Display.PrintError(ex.Message);
                     }
                     break;
                 case "set":
-                    if(args.Length >= 2)
+                    if (args.Length >= 2)
                     {
-                        switch(args[1])
+                        switch (args[1])
                         {
                             case "task":
                                 //reach the set task command. Set command needs to search in the database for a jobtask record
@@ -112,6 +112,30 @@ namespace hourbank.console.Application
                                 break;
                         }
                     }
+                    break;
+                case "start":
+                    //change the task status to start 
+                    if (this.tempTaskData is null)
+                    {
+                        throw new NullReferenceException("Pleaase you need to select a task first before using this command!");
+                    }
+                    if (controller is null)
+                    {
+                        Display.PrintError("You need to set a controller in order to save\\search data");
+                    }
+                    try
+                    {
+                        this.tempTaskData.Status = BusinessTaskStatus.Running;
+                        controller.UpdateTask(this.tempTaskData.Id, tempTaskData);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                    break;
+                case "stop":
+                    //change the task status to stop
+
                     break;
                 case "delete":
                     try
