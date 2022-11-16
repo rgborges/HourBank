@@ -62,7 +62,7 @@ namespace HourBank.Models.Tasks
         /// <returns></returns>
         public void Initialize(BusinessTask businessTask)
         {
-        // Aqui a tarefa acaba de seer criada. Ou seja, não temos ainda Ciclos atrelados á essa tarefa.
+        // Aqui a tarefa acaba de ser criada. Ou seja, não temos ainda Ciclos atrelados á essa tarefa.
         // Aqui a tarefa inicia com um status em 'Initiate' e com 0 cycles cadastrado.
         // outro ponto é que o serviço de contador vai estar desatrelado à essa classe.
             DateTime timetamp = DateTime.Now;
